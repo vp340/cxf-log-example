@@ -1,0 +1,30 @@
+<schema xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:tns="http://ws.schema/example/v1"
+        xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+        targetNamespace="http://ws.schema/example/v1">
+
+    <element name="plutoRequest" type="tns:PlutoRequest">
+        <annotation>
+            <documentation>Input pluto</documentation>
+        </annotation>
+    </element>
+
+    <element name="plutoResponse" type="tns:PlutoResponse">
+        <annotation>
+            <documentation>Output pluto</documentation>
+        </annotation>
+    </element>
+
+    <!--  ComplexTypes  -->
+    <complexType name="PlutoRequest">
+        <sequence>
+            <element name="requestNumber" type="int"/>
+        </sequence>
+    </complexType>
+
+
+    <complexType name="PlutoResponse">
+        <sequence>
+            <element name="responseNumber" type="int"/>
+        </sequence>
+    </complexType>
+</schema>

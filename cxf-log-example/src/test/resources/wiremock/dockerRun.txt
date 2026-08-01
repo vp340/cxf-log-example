@@ -1,0 +1,1 @@
+docker run -d --name wiremock -p 8081:8080 -v "C:\Users\yourFolder":/home/wiremock wiremock/wiremock --disable-http2-plain --disable-http2-tls --disable-gzip --container-threads=400 --async-response-enabled=true --async-response-threads=200 --no-request-journal

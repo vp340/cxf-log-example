@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+
+    <import resource="classpath:META-INF/cxf/cxf.xml"/>
+    <import resource="classpath:spring/example/v1/route-context.xml"/>
+
+    <camelContext xmlns="http://camel.apache.org/schema/spring" allowUseOriginalMessage="false" id="example" streamCache="true" trace="false" useMDCLogging="true">
+        <routeContextRef ref="example_v1"/>
+    </camelContext>
+</beans>

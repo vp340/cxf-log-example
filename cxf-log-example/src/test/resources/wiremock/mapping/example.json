@@ -1,0 +1,13 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "/mockExampleBE"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "text/xml; charset=UTF-8"
+    },
+    "bodyFileName": "response-example.xml"
+  }
+}

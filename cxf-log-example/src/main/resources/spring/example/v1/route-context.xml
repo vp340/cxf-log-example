@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd        http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+    <bean class="org.company.CustomProcessor" id="custom-processor-example_v1"/>
+
+    <import resource="camel-cxf.xml"/>
+
+    <routeContext xmlns="http://camel.apache.org/schema/spring" id="example_v1">
+        <route id="routes-example_v1">
+            <from uri="cxf:bean:exampleEndpoint"/>
+            <log loggingLevel="INFO" message="Start operation: ${header.operationName} in ExampleService_v1"/>
+            <choice>
+                <when>
+                    <simple>${header.operationName} == 'pluto'</simple>
+                    <to uri="cxf:bean:exampleEndpoint_NOMTOM_BE"/>
+
+                    <!--Uncomment this to make RESP_OUT reappear :)  -->
+<!--                    <process ref="custom-processor-example_v1"/>-->
+
+<!--                I think that the problem is the property "org.apache.cxf.logging.enable" set in the In->Headers-> "ResponseContext" that is somehow propagated -->
+<!--                to RESP_OUT Cxf Message-->
+                </when>
+            </choice>
+        </route>
+    </routeContext>
+</beans>

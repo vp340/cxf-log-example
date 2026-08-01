@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:beans="http://www.springframework.org/schema/beans"
+       xmlns:camel-cxf="http://camel.apache.org/schema/cxf/jaxws"
+       xmlns:http-conf="http://cxf.apache.org/transports/http/configuration"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://cxf.apache.org/transports/http/configuration
+       http://cxf.apache.org/schemas/configuration/http-conf.xsd  http://camel.apache.org/schema/cxf/jaxws
+       http://camel.apache.org/schema/cxf/jaxws/camel-cxf.xsd">
+
+    <camel-cxf:cxfEndpoint xmlns:s="http://ws.schema/example/v1"
+                           address="/ExampleService_v1"
+                           endpointName="s:ExampleServicePortType_v1"
+                           id="exampleEndpoint"
+                           serviceClass="schema.ws.example.v1.ExampleServicePortTypeV1"
+                           serviceName="s:ExampleService_v1"
+                           wsdlURL="wsdl/example/v1/interface/ExampleService_v1.0.wsdl">
+        <camel-cxf:properties>
+            <beans:entry key="loggingFeatureEnabled" value="true"/>
+            <beans:entry key="dataFormat" value="POJO"/>
+            <beans:entry key="schema-validation-enabled" value="true"/>
+            <beans:entry key="mtom-enabled" value="true"/>
+        </camel-cxf:properties>
+    </camel-cxf:cxfEndpoint>
+
+    <camel-cxf:cxfEndpoint xmlns:s="http://ws.schema/example/v1"
+                           address="http://localhost:8081/mockExampleBE"
+                           endpointName="s:ExampleServicePortType_v1"
+                           id="exampleEndpoint_NOMTOM_BE"
+                           loggingFeatureEnabled="true"
+                           serviceClass="schema.ws.example.v1.ExampleServicePortTypeV1"
+                           serviceName="s:ExampleService_v1"
+                           wsdlURL="wsdl/example/v1/interface/ExampleService_v1.0.wsdl">
+        <camel-cxf:properties>
+            <beans:entry key="dataFormat" value="POJO"/>
+            <beans:entry key="schema-validation-enabled" value="true"/>
+            <beans:entry key="mtom-enabled" value="false"/>
+        </camel-cxf:properties>
+    </camel-cxf:cxfEndpoint>
+
+    <http-conf:conduit name="{http://ws.schema/example/v1}ExampleServicePortType_v1.http-conduit">
+        <http-conf:client AllowChunking="false"/>
+    </http-conf:conduit>
+</beans>

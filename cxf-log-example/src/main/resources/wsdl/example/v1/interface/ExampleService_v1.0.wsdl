@@ -1,0 +1,54 @@
+<wsdl:definitions xmlns:xsd1="http://ws.schema/example/v1" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://ws.schema/example/v1"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+                  name="ExampleService_v1.1" targetNamespace="http://ws.schema/example/v1">
+    <wsdl:documentation>
+        <version>1.0</version>
+        <author>vp340</author>
+        <creation-date>01/08/2026</creation-date>
+        <last-revision-date/>
+    </wsdl:documentation>
+    <wsdl:types>
+        <xsd:schema xmlns:xsd1="http://ws.schema/example/v1"
+                    xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                    xmlns:http="http://schemas.xmlsoap.org/wsdl/http/">
+            <xsd:import namespace="http://ws.schema/example/v1"
+                        schemaLocation="ExampleService_v1.0.xsd"/>
+        </xsd:schema>
+
+    </wsdl:types>
+    <wsdl:message name="plutoRequest">
+        <wsdl:part element="xsd1:plutoRequest" name="input"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="plutoResponse">
+        <wsdl:part element="xsd1:plutoResponse" name="output"></wsdl:part>
+    </wsdl:message>
+
+    <wsdl:portType name="ExampleServicePortType_v1">
+        <wsdl:documentation>Example to test cxf logging</wsdl:documentation>
+        <wsdl:operation name="pluto">
+            <wsdl:documentation>test</wsdl:documentation>
+            <wsdl:input message="tns:plutoRequest" name="input"></wsdl:input>
+            <wsdl:output message="tns:plutoResponse" name="output"></wsdl:output>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="ExampleServiceBinding_v1" type="tns:ExampleServicePortType_v1">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="pluto">
+            <soap:operation soapAction="http://ws/example/v1/pluto"/>
+            <wsdl:input name="input">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="output">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="ExampleService_v1">
+        <wsdl:port binding="tns:ExampleServiceBinding_v1" name="ExampleServicePortType_v1">
+            <soap:address location="http://127.0.0.1:8181/cxf/ExampleService_v1"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

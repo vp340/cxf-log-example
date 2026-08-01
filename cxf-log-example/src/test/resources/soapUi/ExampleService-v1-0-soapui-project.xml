@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="0ed76bd5-203f-4e17-bdac-b39edd677a66" activeEnvironment="Default" name="ExampleService_v1.0" resourceRoot="" soapui-version="5.10.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="cccef870-07f3-4c47-94d7-74bc6fc58baf" wsaVersion="NONE" name="ExampleServiceBinding_v1" type="wsdl" bindingName="{http://ws.schema/example/v1}ExampleServiceBinding_v1" soapVersion="1_1" anonymous="optional" definition="file:/C:/Users/Valentino/Downloads/cxf-log-example/src/main/resources/wsdl/example/v1/interface/ExampleService_v1.0.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:\C:\Users\Valentino\Downloads\cxf-log-example\src\main\resources\wsdl\example\v1\interface\ExampleService_v1.0.wsdl"><con:part><con:url>file:\C:\Users\Valentino\Downloads\cxf-log-example\src\main\resources\wsdl\example\v1\interface\ExampleService_v1.0.wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="ExampleService_v1.1" targetNamespace="http://ws.schema/example/v1" xmlns:xsd1="http://ws.schema/example/v1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://ws.schema/example/v1" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/">
+  <wsdl:documentation>
+    <version>1.0</version>
+    <author>vp340</author>
+    <creation-date>01/08/2026</creation-date>
+    <last-revision-date/>
+  </wsdl:documentation>
+  <wsdl:types>
+    <xsd:schema>
+      <xsd:import namespace="http://ws.schema/example/v1" schemaLocation="ExampleService_v1.0.xsd"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="plutoRequest">
+    <wsdl:part element="xsd1:plutoRequest" name="input"/>
+  </wsdl:message>
+  <wsdl:message name="plutoResponse">
+    <wsdl:part element="xsd1:plutoResponse" name="output"/>
+  </wsdl:message>
+  <wsdl:portType name="ExampleServicePortType_v1">
+    <wsdl:documentation>Example to test cxf logging</wsdl:documentation>
+    <wsdl:operation name="pluto">
+      <wsdl:documentation>test</wsdl:documentation>
+      <wsdl:input message="tns:plutoRequest" name="input"/>
+      <wsdl:output message="tns:plutoResponse" name="output"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ExampleServiceBinding_v1" type="tns:ExampleServicePortType_v1">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="pluto">
+      <soap:operation soapAction="http://ws/example/v1/pluto"/>
+      <wsdl:input name="input">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="output">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ExampleService_v1">
+    <wsdl:port binding="tns:ExampleServiceBinding_v1" name="ExampleServicePortType_v1">
+      <soap:address location="http://127.0.0.1:8181/cxf/ExampleService_v1"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>file:\C:\Users\Valentino\Downloads\cxf-log-example\src\main\resources\wsdl\example\v1\interface\ExampleService_v1.0.xsd</con:url><con:content><![CDATA[<schema elementFormDefault="qualified" targetNamespace="http://ws.schema/example/v1" xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:tns="http://ws.schema/example/v1" xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="plutoRequest" type="tns:PlutoRequest">
+    <annotation>
+      <documentation>Input pluto</documentation>
+    </annotation>
+  </element>
+  <element name="plutoResponse" type="tns:PlutoResponse">
+    <annotation>
+      <documentation>Output pluto</documentation>
+    </annotation>
+  </element>
+  <!--ComplexTypes-->
+  <complexType name="PlutoRequest">
+    <sequence>
+      <element name="requestNumber" type="int"/>
+    </sequence>
+  </complexType>
+  <complexType name="PlutoResponse">
+    <sequence>
+      <element name="responseNumber" type="int"/>
+    </sequence>
+  </complexType>
+</schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://127.0.0.1:8181/cxf/ExampleService_v1</con:endpoint></con:endpoints><con:operation id="1130d02c-5a2b-4cfa-8a08-add742af47d0" isOneWay="false" action="http://ws/example/v1/pluto" name="pluto" bindingOperationName="pluto" type="Request-Response" outputName="output" inputName="input" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="43604e76-c8de-4942-8d93-bc94f63f501d" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/example/cxf/ExampleService_v1</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://ws.schema/example/v1">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <v1:plutoRequest>\r
+         <v1:requestNumber>4</v1:requestNumber>\r
+      </v1:plutoRequest>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://ws/example/v1/pluto"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>
