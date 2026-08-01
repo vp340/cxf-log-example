@@ -38,6 +38,7 @@
     </camel-cxf:cxfEndpoint>
 
     <http-conf:conduit name="{http://ws.schema/example/v1}ExampleServicePortType_v1.http-conduit">
-        <http-conf:client AllowChunking="false"/>
+        <http-conf:client AllowChunking="false" ConnectionTimeout="60000" ReceiveTimeout="120000" AutoRedirect="true"
+                          Connection="Keep-Alive"/>
     </http-conf:conduit>
 </beans>
