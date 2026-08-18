@@ -2,6 +2,7 @@
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd        http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
 
     <bean class="org.company.CustomProcessor" id="custom-processor-example_v1"/>
+    <bean class="org.company.DebugProcessor" id="debug-processor-example_v1"/>
 
     <import resource="camel-cxf.xml"/>
 
@@ -12,7 +13,34 @@
             <choice>
                 <when>
                     <simple>${header.operationName} == 'pluto'</simple>
+                    <setProperty name="debugPhase">
+                        <constant>START</constant>
+                    </setProperty>
+                    <process ref="debug-processor-example_v1"/>
+                    <setProperty name="originalBody">
+                        <simple>${body}</simple>
+                    </setProperty>
+                    <setProperty name="debugPhase">
+                        <constant>SET_BODY</constant>
+                    </setProperty>
+                    <process ref="debug-processor-example_v1"/>
                     <to uri="cxf:bean:exampleEndpoint_NOMTOM_BE"/>
+                    <setProperty name="debugPhase">
+                        <constant>FIRST_CALL</constant>
+                    </setProperty>
+                    <process ref="debug-processor-example_v1"/>
+                    <setBody>
+                        <simple>${exchangeProperty.originalBody}</simple>
+                    </setBody>
+                    <setProperty name="debugPhase">
+                        <constant>RESET_BODY</constant>
+                    </setProperty>
+                    <process ref="debug-processor-example_v1"/>
+                    <to uri="cxf:bean:exampleEndpoint_NOMTOM_BE"/>
+                    <setProperty name="debugPhase">
+                        <constant>SECOND_CALL</constant>
+                    </setProperty>
+                    <process ref="debug-processor-example_v1"/>
 
                     <!--Uncomment this to make RESP_OUT reappear :)  -->
 <!--                    <process ref="custom-processor-example_v1"/>-->
