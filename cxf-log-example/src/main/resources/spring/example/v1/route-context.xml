@@ -15,7 +15,7 @@
                     <to uri="cxf:bean:exampleEndpoint_NOMTOM_BE"/>
 
                     <!--Uncomment this to make RESP_OUT reappear :)  -->
-<!--                    <process ref="custom-processor-example_v1"/>-->
+                    <process ref="custom-processor-example_v1"/>
 
 <!--                I think that the problem is the property "org.apache.cxf.logging.enable" set in the In->Headers-> "ResponseContext" that is somehow propagated -->
 <!--                to RESP_OUT Cxf Message-->

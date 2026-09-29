@@ -25,6 +25,9 @@
     <complexType name="PlutoResponse">
         <sequence>
             <element name="responseNumber" type="int"/>
+            <element name="allegatoFile"
+                     type="base64Binary"
+                     xmime:expectedContentTypes="application/octet-stream"/>
         </sequence>
     </complexType>
 </schema>

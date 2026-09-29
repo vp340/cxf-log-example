@@ -1,8 +1,12 @@
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
-                  xmlns:v1="http://ws.schema/example/v1">
+                  xmlns:v1="http://ws.schema/example/v1"
+                  xmlns:xop="http://w3.org">
     <soapenv:Body>
         <v1:plutoResponse>
             <v1:responseNumber>1</v1:responseNumber>
+            <v1:allegatoFile>
+
+            </v1:allegatoFile>
         </v1:plutoResponse>
     </soapenv:Body>
 </soapenv:Envelope>
