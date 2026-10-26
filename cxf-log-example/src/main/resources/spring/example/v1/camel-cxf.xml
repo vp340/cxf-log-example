@@ -18,14 +18,18 @@
             <beans:entry key="dataFormat" value="POJO"/>
             <beans:entry key="schema-validation-enabled" value="true"/>
             <beans:entry key="mtom-enabled" value="true"/>
+<!--            <beans:entry key="synchronous" value="true"/>-->
         </camel-cxf:properties>
         <camel-cxf:features>
             <beans:ref bean="customLoggingFeature"/>
         </camel-cxf:features>
+        <camel-cxf:outInterceptors>
+            <bean class="org.company.CosInterceptor" />
+        </camel-cxf:outInterceptors>
     </camel-cxf:cxfEndpoint>
-
+    <!--                           address="http://localhost:8081/mockExampleBE"-->
     <camel-cxf:cxfEndpoint xmlns:s="http://ws.schema/example/v1"
-                           address="http://localhost:8081/mockExampleBE"
+                           address="http://nami-api.free.beeceptor.com/nami"
                            endpointName="s:ExampleServicePortType_v1"
                            id="exampleEndpoint_NOMTOM_BE"
                            serviceClass="schema.ws.example.v1.ExampleServicePortTypeV1"
@@ -39,11 +43,13 @@
         <camel-cxf:features>
             <beans:ref bean="customLoggingFeature"/>
         </camel-cxf:features>
+        <camel-cxf:outInterceptors>
+            <bean class="org.company.CosInterceptor" />
+        </camel-cxf:outInterceptors>
     </camel-cxf:cxfEndpoint>
 
     <http-conf:conduit name="{http://ws.schema/example/v1}ExampleServicePortType_v1.http-conduit">
-        <http-conf:client AllowChunking="false" ConnectionTimeout="60000" ReceiveTimeout="120000" AutoRedirect="true"
-                          Connection="Keep-Alive"/>
+        <http-conf:client AllowChunking="false" ConnectionTimeout="60000" ReceiveTimeout="120000" AutoRedirect="false" />
     </http-conf:conduit>
 
 </beans>

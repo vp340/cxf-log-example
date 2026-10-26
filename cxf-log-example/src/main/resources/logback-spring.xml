@@ -20,7 +20,7 @@
     <logger name="org.apache.cxf" level="INFO"/>
     <logger name="org.apache.camel" level="INFO"/>
 
-    <root level="INFO">
+    <root level="ALL">
         <appender-ref ref="FILE"/>
     </root>
 
