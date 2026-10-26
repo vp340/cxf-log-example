@@ -18,18 +18,14 @@
             <beans:entry key="dataFormat" value="POJO"/>
             <beans:entry key="schema-validation-enabled" value="true"/>
             <beans:entry key="mtom-enabled" value="true"/>
-<!--            <beans:entry key="synchronous" value="true"/>-->
         </camel-cxf:properties>
         <camel-cxf:features>
             <beans:ref bean="customLoggingFeature"/>
         </camel-cxf:features>
-        <camel-cxf:outInterceptors>
-            <bean class="org.company.CosInterceptor" />
-        </camel-cxf:outInterceptors>
     </camel-cxf:cxfEndpoint>
-    <!--                           address="http://localhost:8081/mockExampleBE"-->
+
     <camel-cxf:cxfEndpoint xmlns:s="http://ws.schema/example/v1"
-                           address="http://nami-api.free.beeceptor.com/nami"
+                           address="http://localhost:8081/mockExampleBE"
                            endpointName="s:ExampleServicePortType_v1"
                            id="exampleEndpoint_NOMTOM_BE"
                            serviceClass="schema.ws.example.v1.ExampleServicePortTypeV1"
@@ -39,13 +35,11 @@
             <beans:entry key="dataFormat" value="POJO"/>
             <beans:entry key="schema-validation-enabled" value="true"/>
             <beans:entry key="mtom-enabled" value="false"/>
+            <!--            <beans:entry key="synchronous" value="false"/> doesn't work-->
         </camel-cxf:properties>
         <camel-cxf:features>
             <beans:ref bean="customLoggingFeature"/>
         </camel-cxf:features>
-        <camel-cxf:outInterceptors>
-            <bean class="org.company.CosInterceptor" />
-        </camel-cxf:outInterceptors>
     </camel-cxf:cxfEndpoint>
 
     <http-conf:conduit name="{http://ws.schema/example/v1}ExampleServicePortType_v1.http-conduit">
