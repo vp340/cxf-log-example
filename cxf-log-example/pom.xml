@@ -28,6 +28,17 @@
 
     <dependencyManagement>
         <dependencies>
+<!--            Build my fix PR and try to make Too few bytes returned by the publisher (0/241) disappear-->
+<!--            <dependency>-->
+<!--                <groupId>org.apache.cxf</groupId>-->
+<!--                <artifactId>cxf-core</artifactId>-->
+<!--                <version>4.2.5-SNAPSHOT</version>-->
+<!--            </dependency>-->
+<!--            <dependency>-->
+<!--                <groupId>org.apache.cxf</groupId>-->
+<!--                <artifactId>cxf-rt-transports-http</artifactId>-->
+<!--                <version>4.2.5-SNAPSHOT</version>-->
+<!--            </dependency>-->
             <dependency>
                 <groupId>org.apache.camel.springboot</groupId>
                 <artifactId>camel-spring-boot-bom</artifactId>
@@ -35,16 +46,35 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <dependency>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-bom</artifactId>
+                <version>4.2.4</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
     <dependencies>
+<!--        <dependency>-->
+<!--            <groupId>org.apache.cxf</groupId>-->
+<!--            <artifactId>cxf-rt-transports-http</artifactId>-->
+<!--            <version>4.1.10-SNAPSHOT</version>-->
+<!--        </dependency>-->
 <!--        Uncomment this to use AsyncHTTPConduit#AsyncWrappedOutputStream-->
 <!--        <dependency>-->
 <!--            <groupId>org.apache.cxf</groupId>-->
 <!--            <artifactId>cxf-rt-transports-http-hc</artifactId>-->
 <!--            <version>4.1.1</version>-->
 <!--        </dependency>-->
+
+
+        <dependency>
+            <groupId>org.wiremock</groupId>
+            <artifactId>wiremock-standalone</artifactId>
+            <version>3.10.0</version> <!-- o l'ultima versione disponibile -->
+        </dependency>
         <!-- Spring Boot -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

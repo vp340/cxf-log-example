@@ -18,6 +18,9 @@
     <complexType name="PlutoRequest">
         <sequence>
             <element name="requestNumber" type="int"/>
+            <element name="pippo"
+                     type="string"
+                     />
         </sequence>
     </complexType>
 

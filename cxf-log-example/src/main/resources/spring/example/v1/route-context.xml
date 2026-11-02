@@ -2,6 +2,7 @@
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd        http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
 
     <bean class="org.company.CustomProcessor" id="custom-processor-example_v1"/>
+    <bean class="org.company.CustomProcessor2" id="custom-processor2-example_v1"/>
 
     <import resource="camel-cxf.xml"/>
 
@@ -12,6 +13,7 @@
             <choice>
                 <when>
                     <simple>${header.operationName} == 'pluto'</simple>
+                    <process ref="custom-processor2-example_v1"/>
                     <to uri="cxf:bean:exampleEndpoint_NOMTOM_BE"/>
 
                     <!--Uncomment this to make RESP_OUT reappear :)  -->

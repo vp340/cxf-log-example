@@ -25,7 +25,7 @@
     </camel-cxf:cxfEndpoint>
 
     <camel-cxf:cxfEndpoint xmlns:s="http://ws.schema/example/v1"
-                           address="http://localhost:8081/mockExampleBE"
+                           address="http://mp4af2bb6577f48a3dcd.free.beeceptor.com/publisherTest"
                            endpointName="s:ExampleServicePortType_v1"
                            id="exampleEndpoint_NOMTOM_BE"
                            serviceClass="schema.ws.example.v1.ExampleServicePortTypeV1"
@@ -43,7 +43,7 @@
     </camel-cxf:cxfEndpoint>
 
     <http-conf:conduit name="{http://ws.schema/example/v1}ExampleServicePortType_v1.http-conduit">
-        <http-conf:client AllowChunking="false" ConnectionTimeout="60000" ReceiveTimeout="120000" AutoRedirect="false" />
+        <http-conf:client AllowChunking="true" ConnectionTimeout="170" ReceiveTimeout="30000" AutoRedirect="false" Connection="close" />
     </http-conf:conduit>
 
 </beans>
