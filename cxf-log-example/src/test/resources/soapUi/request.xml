@@ -5,6 +5,7 @@ http://localhost:8080/example/cxf/ExampleService_v1
     <soapenv:Body>
         <v1:plutoRequest>
             <v1:requestNumber>4</v1:requestNumber>
+            <v1:pippo>Z2ZkZ2RmZw==</v1:pippo>
         </v1:plutoRequest>
     </soapenv:Body>
 </soapenv:Envelope>
